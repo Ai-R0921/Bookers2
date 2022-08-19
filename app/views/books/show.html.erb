@@ -4,6 +4,7 @@
   <p><%= @book.title %></p>
   <p><%= @book.body %></p>
   <% if @book.user == current_user %>
-    <%= link_to "Destroy", books_path(@books), method: :delete %>
+    <%= link_to "Edit", edit_book_path(@book) %>
+    <%= link_to "Destroy", books_path, method: :delete %>
   <% end %>
 </div>
