@@ -1,6 +1,6 @@
 <h1>Book detail</h1>
 <div>
-  <%= image_tag @book.get_image %>
+  <%= image_tag @book.get_profile_image(100,100) %>
   <p><%= @book.title %></p>
   <p><%= @book.body %></p>
   <% if @book.user == current_user %>

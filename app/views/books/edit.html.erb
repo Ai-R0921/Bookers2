@@ -1,15 +1,28 @@
-<h1>Editing Book</h1>
-<%= form_with model: @book do |f| %>
-  <label for="inputTitle">Title</label><br>
-  <%= f.text_field :title, autofocus: true, id:"inputTitle" %><br>
-  <label for="inputBody">Opinion</label><br>
-  <%= f.text_field :body, autofocus: true, id:"inputBody" %><br>
-  <%= f.submit "Update Book" %>
-<% end %>
-
-<li>
-  <%= link_to "Show",book_path(@book) %>
-</li>
-<li>
-  <%= link_to "Back",books_path %>
-</li>
+<!DOCTYPE html>
+<html>
+  <body>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+            <h1>Editing Book</h1>
+              <%= form_with model: @book do |f| %>
+                <label for="inputTitle">Title</label><br>
+                  <%= f.text_field :title, autofocus: true, id:"inputTitle", class:"form-control" %><br>
+                <label for="inputBody">Opinion</label><br>
+                  <%= f.text_area :body, autofocus: true, id:"inputBody", class:"form-control" %><br>
+              <%= f.submit "Update Book", class:"btn btn-success" %>
+              <% end %>
+              <a>
+                <%= link_to "Show",book_path(@book) %>
+              </a>
+               |
+              <a>
+                <%= link_to "Back",books_path %>
+              </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
