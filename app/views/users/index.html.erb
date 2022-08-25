@@ -1,8 +1,13 @@
-<h1>Users</h1>
-<% @users.each do |user| %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'books/userinfo', book: @book %>
 
-<div>
-  <p>image <%= image_tag user.get_profile_image(100,100) %></p>
-  <p>name <%= user.name %></p>
+    <h1>Users</h1>
+    <% @users.each do |user| %>
+      <div>
+        <p>image <%= image_tag user.get_profile_image(100,100) %></p>
+        <p>name <%= user.name %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
-<% end %>
