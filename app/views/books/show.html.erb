@@ -1,16 +1,38 @@
+<p id="notice">
+  <%= notice %>
+</p>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <%= render 'userinfo', book: @book %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@book.id) do %>
+                <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= @book.body %>
+            </td>
+            <td>
+              <% if @book.user == current_user %>
+                <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success btn-sm" %>
+                <%= link_to "Destroy", book_path(@book.id), class:"btn btn-danger btn-sm", method: :delete, data: {confirm:"Are you sure?"} %>
+              <% end %>
+            </td>
+          </tr>
 
-    <h1>Book detail</h1>
-    <div>
-      <%= image_tag @book.get_profile_image(100,100) %>
-      <p><%= @book.title %></p>
-      <p><%= @book.body %></p>
-      <% if @book.user == current_user %>
-        <%= link_to "Edit", edit_book_path(@book.id) %>
-        <%= link_to "Destroy", book_path(@book.id), method: :delete %>
-      <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -25,6 +25,6 @@
                <%= f.text_field :title, class:"form-control" %>
               <h6>Opinion</h6>
                <%= f.text_area :body, class:"form-control" %><br>
-              <%= f.submit 'Create Book', class:"btn btn-success" %>
+              <%= f.submit 'Create Book', class:"btn btn-success", method: :post %>
             <% end %>
       </div>
