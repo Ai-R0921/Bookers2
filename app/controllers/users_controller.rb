@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @book_new = Book.new
 
   end
 
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @books = Book.all
+    @book_new = Book.new
   end
 
   private

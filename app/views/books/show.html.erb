@@ -3,14 +3,14 @@
 </p>
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <%= render 'userinfo', book: @book %>
+    <%= render 'userinfo', book: @book_new %>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tbody>
           <tr>
             <td>
-              <%= link_to user_path(@book.id) do %>
+              <%= link_to user_path(@user.id) do %>
                 <%= image_tag @book.user.get_profile_image(100,100) %><br>
                 <%= @book.user.name %>
               <% end %>
