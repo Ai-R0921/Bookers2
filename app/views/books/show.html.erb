@@ -3,20 +3,20 @@
 </p>
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <%= render 'userinfo', book: @book_new %>
+    <%= render 'userinfo', book_new: @book_new, book: @book %>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tbody>
           <tr>
             <td>
-              <%= link_to user_path(@user.id) do %>
+              <%= link_to user_path(@book.user) do %>
                 <%= image_tag @book.user.get_profile_image(100,100) %><br>
                 <%= @book.user.name %>
               <% end %>
             </td>
             <td>
-              <%= link_to book_path(@book.id) do %>
+              <%= link_to book_path(@book) do %>
                 <%= @book.title %>
               <% end %>
             </td>
@@ -25,8 +25,8 @@
             </td>
             <td>
               <% if @book.user == current_user %>
-                <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success btn-sm" %>
-                <%= link_to "Destroy", book_path(@book.id), class:"btn btn-danger btn-sm", method: :delete, data: {confirm:"Are you sure?"} %>
+                <%= link_to "Edit", edit_book_path(@book), class:"btn btn-success btn-sm" %>
+                <%= link_to "Destroy", book_path(@book), class:"btn btn-danger btn-sm", method: :delete, data: {confirm:"Are you sure?"} %>
               <% end %>
             </td>
           </tr>

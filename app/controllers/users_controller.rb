@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+
   def new
     @book = Book.new
   end
@@ -19,11 +20,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book_new = Book.new
+    @book = Book.new
 
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    if @user == current_user
+      render :edit
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def update
@@ -31,6 +38,10 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:notice] ="You have updated user successfully."
       redirect_to user_path(@user)
+    else
+      @books = Book.all
+      @book_new = Book.new
+      render :edit
     end
   end
 
@@ -38,6 +49,7 @@ class UsersController < ApplicationController
     @users = User.all
     @books = Book.all
     @book_new = Book.new
+    @book = Book.new
   end
 
   private
@@ -49,6 +61,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
-
 
 end
